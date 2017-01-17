@@ -4,5 +4,4 @@
 
 ---
 
-**目录**
-- [Vim使用入门](Articles/170114-vim.md) -20170114
+[点击这里预览](http://nicole-d.party/blog/)
