@@ -1,52 +1,195 @@
-#Vimʹ������
+<!DOCTYPE html>
+<head>
+	<title>Vim使用入门</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="ArticlesStyle.css">
+</head>
+<body>
+	<h1 class="title">Vim使用入门</h1>
+	<h4 class="date">2017-01-14</h4>
+	<div class="show-content">
+		<p>Vim是从vi发展出来的一个高级文本编辑器，在编写程序时非常有用，经常被认为“程序员的编辑器”，支持Linux、Mac OS、Windows系统，在终端中输入<code>$vim [filename]</code> 命令即可进入Vim编辑器对该文件进行编辑，若文件不存在，则会在当前目录下以这个文件名新建一个文件。</p>
+		<p>Vim拥有如下三种模式：<br><strong>插入模式</strong>：即 insert 模式，用来输入文本；<br><strong>编辑模式</strong>：用以执行命令，也称为正常模式，也是进入Vim的缺省模式；<br><strong>命令模式</strong>：用来执行冒号命令。<br>进入Vim后会直接进入编辑模式，接下来按下<code>i</code>进入插入模式，可以输入字符，按下<code>&lt;Esc&gt;</code>键将从插入模式转换到编辑模式，该模式用于移动和操纵文本。在编辑模式下输入<code>:</code>即可进入命令模式，可以进行保存、查找、替换、配置Vim操作等。</p>
+		<p>在Vim的编辑模式下，一些常用的按键都变成了功能键，并且与大家在Windows下常用的快捷键完全不同，在这里，总结一些初学Vim所用的按键功能：</p>
+		<table>
+			<thead>
+				<tr>
+					<th style="text-align:left">按键</th>
+					<th style="text-align:left">功能</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:left">
+						<code>h</code>或<code>←</code>
+					</td>
+					<td style="text-align:left">光标左移</td>
+				</tr>
+				<tr>
+					<td style="text-align:left">
+						<code>l</code>或<code>→</code>
+					</td>
+					<td style="text-align:left">光标右移</td>
+				</tr>
+				<tr>
+					<td style="text-align:left">
+						<code>k</code>或<code>↑</code>
+					</td>
+					<td style="text-align:left">光标上移</td>
+				</tr>
+				<tr>
+					<td style="text-align:left">
+						<code>j</code>或<code>↓</code>
+					</td>
+					<td style="text-align:left">光标下移</td>
+				</tr>
+				<tr>
+					<td style="text-align:left"><code>gg</code></td>
+					<td style="text-align:left">快速定位到文本开头</td>
+				</tr>
+				<tr>
+					<td style="text-align:left">
+						<code>G</code>（<code>shift</code>+<code>g</code>）</td>
+						<td style="text-align:left">快速定位到文本最后一段</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<code>0</code>或<code>home</code>
+						</td>
+						<td style="text-align:left">快速定位到当前段首</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<code>$</code>或<code>end</code>
+						</td>
+						<td style="text-align:left">快速定位到当前段首</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<code>Ctrl</code>+<code>f</code>
+						</td>
+						<td style="text-align:left">向下翻一页</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<code>Ctrl</code>+<code>b</code>
+						</td>
+						<td style="text-align:left">向上翻一页</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<code>Ctrl</code>+<code>d</code>
+						</td>
+						<td style="text-align:left">向下翻半页</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<code>Ctrl</code>+<code>u</code>
+						</td>
+						<td style="text-align:left">向上翻一页</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>/string</code></td>
+						<td style="text-align:left">查找文本中光标位置下方的string字符串，如要查找kabc则直接输入/kabc即可</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>?string</code></td>
+						<td style="text-align:left">查找文本中光标位置上方的string字符串，如要查找kabc则直接输入?kabc即可</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>yy</code></td>
+						<td style="text-align:left">复制光标所在的段落</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>y0</code></td>
+						<td style="text-align:left">复制光标位置到段首的所有字符</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>y$</code></td>
+						<td style="text-align:left">复制光标位置到段尾的所有字符</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>nyy</code></td>
+						<td style="text-align:left">从光标位置向下复制n段，包含光标所在的段落</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>ygg</code></td>
+						<td style="text-align:left">复制光标位置所在段落到文本开头的所有内容</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>yG</code></td>
+						<td style="text-align:left">复制光标位置所在段落到文本结尾的所有内容</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>p</code></td>
+						<td style="text-align:left">将复制的内容粘贴为光标所在段落的下一段</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>P</code></td>
+						<td style="text-align:left">将复制的内容粘贴为光标所在段落的上一段</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>dd</code></td>
+						<td style="text-align:left">删除光标所在的段落</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>d0</code></td>
+						<td style="text-align:left">删除光标位置到段首的所有字符</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>d$</code></td>
+						<td style="text-align:left">删除光标位置到段尾的所有字符</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>dgg</code></td>
+						<td style="text-align:left">删除光标位置所在段落到文本开头的所有内容</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>dG</code></td>
+						<td style="text-align:left">删除光标位置所在段落到文本结尾的所有内容</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>ndd</code></td>
+						<td style="text-align:left">从光标位置向下删除n段，包含光标所在的段落</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>u</code></td>
+						<td style="text-align:left">撤销上一个操作</td>
+					</tr>
+					<tr>
+						<td style="text-align:left">
+							<code>Ctrl</code>+<code>r</code>
+						</td>
+						<td style="text-align:left">重复上一个操作</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>:w</code></td>
+						<td style="text-align:left">保存数据</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>:w!</code></td>
+						<td style="text-align:left">保存时强制写入数据，不管文件是否为只读文件</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>:q</code></td>
+						<td style="text-align:left">关闭Vim</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>:q</code></td>
+						<td style="text-align:left">关闭Vim，对所做的修改不做保存</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>:wq</code></td>
+						<td style="text-align:left">保存数据后关闭Vim</td>
+					</tr>
+					<tr>
+						<td style="text-align:left"><code>:wq</code></td>
+						<td style="text-align:left">强制保存数据并关闭Vim</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>以上只是对刚开始接触Vim用到的一些复制、粘贴、查找、删除以及保存等简单操作的总结，但我已经领略到了Vim所带来的便利，对Vim的使用还需要在使用中不断练习，让它真正成为学习工作的好帮手。</p>
 
-Vim�Ǵ�vi��չ������һ���߼��ı��༭�����ڱ�д����ʱ�ǳ����ã���������Ϊ������Ա�ı༭������֧��Linux��Mac OS��Windowsϵͳ�����ն�������`$vim [filename]` ����ɽ���Vim�༭���Ը��ļ����б༭�����ļ������ڣ�����ڵ�ǰĿ¼��������ļ����½�һ���ļ���
+		</div>
 
-Vimӵ����������ģʽ��
-**����ģʽ**���� insert ģʽ�����������ı���
-**�༭ģʽ**������ִ�����Ҳ��Ϊ����ģʽ��Ҳ�ǽ���Vim��ȱʡģʽ��
-**����ģʽ**������ִ��ð�����
-����Vim���ֱ�ӽ���༭ģʽ������������`i`�������ģʽ�����������ַ�������`<Esc>`�����Ӳ���ģʽת�����༭ģʽ����ģʽ�����ƶ��Ͳ����ı����ڱ༭ģʽ������`:`���ɽ�������ģʽ�����Խ��б��桢���ҡ��滻������Vim�����ȡ�
-
-��Vim�ı༭ģʽ�£�һЩ���õİ���������˹��ܼ�������������Windows�³��õĿ�ݼ���ȫ��ͬ��������ܽ�һЩ��ѧVim���õİ������ܣ�
-
-|����|����|
-| :--- |:-----|
-|`h`��`��`|�������|
-|`l`��`��`|�������|
-|`k`��`��`|�������|
-|`j`��`��`|�������|
-|`gg`|���ٶ�λ���ı���ͷ|
-|`G`��`shift`+`g`��|���ٶ�λ���ı����һ��|
-|`0`��`home`|���ٶ�λ����ǰ����|
-|`$`��`end`|���ٶ�λ����ǰ����|
-|`Ctrl`+`f`|���·�һҳ|
-|`Ctrl`+`b`|���Ϸ�һҳ|
-|`Ctrl`+`d`|���·���ҳ|
-|`Ctrl`+`u`|���Ϸ�һҳ|
-|`/string`|�����ı��й��λ���·���string�ַ�������Ҫ����kabc��ֱ������/kabc����|
-|`?string`|�����ı��й��λ���Ϸ���string�ַ�������Ҫ����kabc��ֱ������?kabc����|
-|`yy`|���ƹ�����ڵĶ���|
-|`y0`|���ƹ��λ�õ����׵������ַ�|
-|`y$`|���ƹ��λ�õ���β�������ַ�|
-|`nyy`|�ӹ��λ�����¸���n�Σ�����������ڵĶ���|
-|`ygg`|���ƹ��λ�����ڶ��䵽�ı���ͷ����������|
-|`yG`|���ƹ��λ�����ڶ��䵽�ı���β����������|
-|`p`|�����Ƶ�����ճ��Ϊ������ڶ������һ��|
-|`P`|�����Ƶ�����ճ��Ϊ������ڶ������һ��|
-|`dd`|ɾ��������ڵĶ���|
-|`d0`|ɾ�����λ�õ����׵������ַ�|
-|`d$`|ɾ�����λ�õ���β�������ַ�|
-|`dgg`|ɾ�����λ�����ڶ��䵽�ı���ͷ����������|
-|`dG`|ɾ�����λ�����ڶ��䵽�ı���β����������|
-|`ndd`|�ӹ��λ������ɾ��n�Σ�����������ڵĶ���|
-|`u`|������һ������|
-|`Ctrl`+`r`|�ظ���һ������|
-|`:w`|��������|
-|`:w!`|����ʱǿ��д�����ݣ������ļ��Ƿ�Ϊֻ���ļ�|
-|`:q`|�ر�Vim|
-|`:q`|�ر�Vim�����������޸Ĳ�������|
-|`:wq`|�������ݺ�ر�Vim|
-|`:wq`|ǿ�Ʊ������ݲ��ر�Vim|
-
-����ֻ�ǶԸտ�ʼ�Ӵ�Vim�õ���һЩ���ơ�ճ�������ҡ�ɾ���Լ�����ȼ򵥲������ܽᣬ�����Ѿ����Ե���Vim�������ı�������Vim��ʹ�û���Ҫ��ʹ���в�����ϰ������������Ϊѧϰ�����ĺð��֡�
+	</body>
