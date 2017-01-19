@@ -1,0 +1,31 @@
+.layout{
+	width: 600px;
+	margin: 0 auto;
+}
+
+.layout>table{
+	margin: 30px 0px;
+	font-family: arial;
+	font-size: 16px;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.layout>table tr:nth-child(2n){
+	background-color: #EEE;
+}
+
+.layout td, .layout th{
+	padding: 8px;
+	border-bottom: 1px solid #CCC;
+}
+
+.table-green th{
+	background-color: #4CAF50;
+	color: white;
+}
+
+.table-green{	
+	border: 1px solid #CCC;
+}
