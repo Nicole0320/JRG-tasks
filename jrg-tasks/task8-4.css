@@ -1,0 +1,51 @@
+.layout>div{
+	margin: 30px;
+	width: 0px;
+	height: 0px;
+}
+
+.full{
+
+	border: 30px solid;
+	border-color: blue yellow green red;
+}
+
+.top{
+	border: 30px solid;
+	border-color: transparent;
+	border-top-color: blue;
+}
+
+.left{
+	border: 30px solid;
+	border-color: transparent;
+	border-left-color: red;
+}
+
+.right{
+	border: 30px solid;
+	border-color: transparent;
+	border-right-color: yellow;
+}
+
+.bottom{
+	border: 30px solid;
+	border-color: transparent;
+	border-bottom-color: green;
+}
+
+.left-bottom{
+	border: 30px solid;
+	border-color: transparent transparent red red;
+}
+
+.right-bottom{
+	border: 30px solid;
+	border-color: transparent green green transparent;
+}
+
+.bowknot{
+	border: 30px solid;
+	border-color: transparent maroon;
+	border-radius: 50%;
+}
