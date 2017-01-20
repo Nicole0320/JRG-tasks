@@ -36,6 +36,10 @@
 	text-align: left;
 }
 
-.scenery p{
+.scenery p, .rotate p{
 	text-align: center;
+}
+
+.rotate{
+	transform: rotate(10deg);
 }
