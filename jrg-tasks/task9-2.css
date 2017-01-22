@@ -1,0 +1,9 @@
+.iconfont{
+	font-size: 100px;
+	color: red;
+	font-style: normal;
+}
+
+.iconfont:hover{
+	color: blue;
+}

@@ -1,0 +1,10 @@
+.logo{
+	width: 210px;
+	height: 200px;
+	background-image: url(images/jirengu-logo.jpg);
+	background-position: top;
+}
+
+.logo:hover{
+	background-position: bottom;
+}
