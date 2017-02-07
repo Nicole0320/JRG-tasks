@@ -1,0 +1,13 @@
+.box{
+	width: 600px;
+	margin: 30px auto;
+	box-shadow: 0px 5px 8px 3px #aaa;
+	padding: 10px;
+}
+
+.box textarea{
+	width: 700px;
+	overflow: scroll;
+	outline: none;
+	border-bottom: 1px solid black;
+}
