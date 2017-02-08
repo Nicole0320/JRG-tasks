@@ -7,22 +7,42 @@
 </head>
 <body>
 	<div class="box">
-		<h3 class="head">信息收集表</h3>
+		<h2 class="head">信息收集表</h2>
 		<form method="post" action="#">
-			<p>姓名</p>
-			<textarea name="name"></textarea>
-			<p>QQ</p>
-			<textarea name="QQ"></textarea>
-			<p>要说的话</p>
-			<textarea name="else"></textarea>
+			<div class="typeIn">
+				<label for="name">姓名</label>
+				<input type="text" name="name" id="name" placeholder="对text类型的input框的width设置超出父元素的宽度，并将父元素在CSS样式中设置overflow-x: scroll 实现横向滚动，这样如果文本长度超出input框，实际上滚动条无法将文本拉到最左或最右">
+			</div>
+			<div class="typeIn">
+				<label for="QQ">QQ</label>
+				<input type="text" name="QQ" id="QQ">
+			</div>
+			<div class="typeIn">
+				<label for="else">要说的话</label>
+				<input type="text" name="else" id="else">
+			</div>
+			<label for="kk">我的一点想法</label>
+			<textarea name="kk" id="kk" wrap="off">直接对 textarea 设置属性 wrap="off", 并在CSS中对其设置 overflow-x: scroll; 实现横向滚动，这样实现可是使横向滚动条动态出现，拉到最左边或最右边的同时文本也到达最左或最右，我认为实际应用中这样的实现更有意义</textarea>
+			<div class="options">
 			<div class="food">
-				<input type="checkbox" name="food" value="milk">Milk
-				<input type="checkbox" name="food" value="sugar">Sugar
-				<input type="checkbox" name="food" value="lemon">Lemon
+				<div>
+					<input type="checkbox" name="food" value="milk">Milk
+				</div>
+				<div>
+					<input type="checkbox" name="food" value="sugar">Sugar
+				</div>
+				<div>
+					<input type="checkbox" name="food" value="lemon">Lemon
+				</div>
 			</div>
 			<div class="sex">
-				<input type="radio" name="sex" value="male">Male
-				<input type="radio" name="sex" value="female">Female
+				<div>
+					<input type="radio" name="sex" value="male">Male
+				</div>
+				<div>
+					<input type="radio" name="sex" value="female">Female
+				</div>
+			</div>
 			</div>
 			<input type="submit" value="提交">
 		</form>
