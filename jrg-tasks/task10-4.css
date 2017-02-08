@@ -1,0 +1,15 @@
+.navigation a{
+	display: block;
+}
+
+.bar>li{
+	display: block;
+}
+
+.sub-bar>li{
+	display: none;
+}
+
+.bar>li a:hover li{
+	display: block;
+}
