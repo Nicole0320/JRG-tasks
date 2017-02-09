@@ -1,15 +1,59 @@
-.navigation a{
-	display: block;
+*{margin: 0; padding: 0;}
+
+#navigator{
+	color: #333;
+	width: 600px;
+	margin: 8px auto;
 }
 
-.bar>li{
-	display: block;
+ul, li{
+	list-style: none;
 }
 
-.sub-bar>li{
+.clear::after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#navigator > ul{
+	/*border: 1px solid red;*/
+	background-color: #f1f1f1;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+#navigator > ul > li{
+	float: left;
+	position: relative;
+	z-index: 1;
+	/*border: 1px solid green;*/
+}
+
+#navigator ul > li > a{
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+	padding: 8px 16px;
+}
+
+#navigator ul > li:hover > a{
+	background: #ccc;
+}
+
+#navigator .sub-bar{
 	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 2;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.bar>li a:hover li{
+#navigator .sub-bar > li > a{
+	display: inline-block;
+	width: 150px;
+}
+
+#navigator > ul > li:hover > .sub-bar{
 	display: block;
 }
