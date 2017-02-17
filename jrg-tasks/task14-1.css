@@ -30,17 +30,28 @@ body {
 	opacity: 0.6;
 }
 
+.labels {
+	width: 400px;
+}
+
 .bar {
-	margin: 30px 0;
+	margin: 30px auto;
+}
+
+.bar:after{
+	content: '';
+	display: block;
+	clear: both;
 }
 
 .bar>li {
-	display: inline-block;
-	margin: 3px;
+	display: block;
+	margin: 0px 0px 0px 15px;
 	background: #72b890;
 	color: #fff;
 	font-size: 14px;
 	border-radius: 3px;
+	float: left;
 }
 
 .bar>li>label{
@@ -84,23 +95,50 @@ input[name="slides"]:nth-of-type(5):checked ~ .labels>li:nth-child(5){
 	opacity: 0.6;
 }
 
-#main>.bottom-bar>li>a{
+#main>.bottom-bar{
+	position: relative;
+	width: 200px;
+	/*top: -300px;*/
+}
+
+#main>.bottom-bar>li a {
 	text-decoration: none;
 	padding: 6px 14px;
 	display: block;
 	color: inherit;
 }
 
-#footer>p{
+.sub-menu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 15px;
+}
+
+.sub-menu>li {
+	border-radius: 3px;
+	background: #72b890;
+}
+
+.sub-menu>li:hover {
+	background-color: #59a078;
+	opacity: 1;
+}
+
+.bottom-bar>li:hover>.sub-menu {
+	display: block;
+}
+
+
+#footer>p {
 	font-size: 14px;
 	color: #87968e;
 }
 
-#footer>p>a{
+#footer>p>a {
 	text-decoration: none;
 	color: #72b890
 }
-
 
 
 @keyframes slide{
