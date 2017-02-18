@@ -72,10 +72,14 @@ body {
 	width: 400px;
 	height: 300px;
 	margin: 40px auto 0 auto;
+	position: relative;
 }
 
 .slide-image>li {
 	display: none;
+	position: absolute;
+	top: 0;
+	height: 0;
 }
 
 input[name="slides"]:nth-of-type(1):checked ~ .slide-image>li:nth-child(1),
