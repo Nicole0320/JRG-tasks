@@ -1,0 +1,171 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+ul, li{
+	list-style: none;
+}
+
+.layout{
+	max-width: 1000px;
+	margin: 0 auto;
+	border: 1px solid green;
+
+}
+
+.container{
+	max-width: 1150px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.clear:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.img-index{
+	background-image: url(yys/img-index.png);
+	background-repeat: no-repeat;
+}
+
+/**************************导航栏*******************************/
+.navbar{
+	/*display: none;*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	color: #eee;
+	background-color: rgba(1,1,1,0.7);
+}
+
+.navbar .logo{
+	float: left;
+	width: 250px;
+}
+
+.navbar .logo>a{
+	display: block;
+	width: 72px;
+	height: 72px;
+	float: left;
+	background-position: -1437px -100px, top left;
+}
+
+.navbar .logo>h3{
+	margin: 0px 20px 0px 80px;
+	font-size: 32px;
+}
+
+.navbar .logo>p{
+	margin: 0px 20px 0px 80px;
+	font-size: 16px;
+}
+
+.navbar ul{
+	display: block;
+	float: right;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.navbar ul>li{
+	display: inline-block;
+	margin-left: 15px;
+	text-align: right;
+}
+
+.navbar ul>li>a{
+	display: block;
+	padding: 15px 10px;
+	text-decoration: none;
+	text-align: center;
+	width: 80px;
+	color: inherit;
+	border-radius: 5px;
+}
+
+.navbar ul>li>a:hover{
+	color: #fed136;
+}
+
+.navbar ul>li>a:active{
+	color: #eee;
+	background-color: #fed136;
+}
+
+.navbar ul>li>a:focus{
+	color: #fff;
+	background-color: #fed136;
+	opacity: 0.9;
+}
+/*******************************导航栏--end******************************/
+
+/********************************头部封面********************************/
+header{
+	background-image: url(yys/header.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 800px;
+}
+
+header{
+	position: relative;
+}
+
+header>img{
+	display: block;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	margin-left: -398px;
+}
+
+header>.download{
+	background-image: url(yys/download_bg.png);
+	background-repeat: no-repeat;
+	width: 301px;
+	height: 135px;
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	margin-left: -150px;
+}
+
+header>.download>img{
+	width: 117px;
+	display: block;
+	float: left;
+	margin: 9px 2px;
+}
+
+header>.download>a{
+	display: block;
+	width: 171px;
+	height: 51px;
+	margin: 12px 0 7px 124px;
+}
+
+header>.download>a:first-of-type{
+	background-position: -626px -1240px, left top;
+}
+
+header>.download>a:last-of-type{
+	background-position: -1200px -1096px, left top;
+}
+
+header>.download>a:first-of-type:hover{
+	background-position: -797px -1240px, left top;
+}
+
+header>.download>a:last-of-type:hover{
+	background-position: -127px -302px, left top;
+}
+/****************************头部封面--end****************************/
+
+/*****************************主角介绍********************************/
