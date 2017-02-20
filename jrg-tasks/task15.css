@@ -12,12 +12,14 @@ ul, li{
 	margin: 0 auto;
 	/*border: 1px solid green;*/
 	color: #333;
+	font-family: sans-serif;
 }
 
 .container{
 	max-width: 1150px;
 	margin: 0 auto;
 	position: relative;
+	font-family: sans-serif;
 }
 
 .clear:after{
@@ -111,7 +113,8 @@ header{
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	height: 800px;
+	height: 100vh;
+	min-height: 700px;
 }
 
 header{
@@ -177,7 +180,7 @@ header>.download>a:last-of-type:hover{
 
 /*****************************主角介绍********************************/
 #character{
-	padding: 100px 0;
+	padding: 120px 0;
 }
 
 #character>h2, #character>p{
@@ -186,8 +189,8 @@ header>.download>a:last-of-type:hover{
 	text-align: center;
 }
 
-#character>.line-list{
-	/*padding-top: 1px;*/
+#character>p{
+	color: #777;
 }
 
 #character>.line-list>li{
@@ -268,3 +271,120 @@ header>.download>a:last-of-type:hover{
 	border: 2px solid #e4e4e4;
 }
 /********************************主角介绍--end***************************/
+
+/********************************活动专区********************************/
+#active{
+	padding: 120px 0;
+}
+
+#active>.title{
+	width: 386px;
+	margin: 0 auto;
+	vertical-align: middle;
+}
+
+#active>.title>.title-img{
+	display: inline-block;
+	width: 143px;
+	height: 133px;
+	background-image: url(yys/activity-title.png);
+	background-position: 0 -82px, top left;
+	vertical-align: middle;
+}
+
+#active>.title>h2{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#active>.card{
+	float: left;
+	width: 300px;
+	margin: 50px 0 0 25px;
+	text-align: center;
+	color: #777;
+}
+
+#active>.card>a{
+	display: block;
+}
+
+#active>.card>a>img{
+	width: 300px;
+	border-radius: 50%;
+}
+/********************************活动专区--end**************************/
+
+/********************************同人专区*******************************/
+#fanmade{
+	padding: 150px 0;
+	text-align: center;
+}
+
+#fanmade>h2{
+	width: 100px;
+	margin: 10px auto;
+}
+
+#fanmade>p{
+	width: 100px;
+	margin: 10px auto;
+	color: #777;
+}
+
+#fanmade>.cards{
+	margin: 50px 0 0 -20px;
+}
+
+#fanmade .card{
+	position: relative;
+	width: 320px;
+	float: left;
+	margin: 0 0 30px 20px;
+}
+
+#fanmade .card img{
+	display: block;
+	width: 320px;
+}
+
+#fanmade .card h4{
+	margin-top: 10px;
+}
+
+#fanmade .card p{
+	color: #777;
+}
+
+#fanmade .card .cover{
+	display: block;
+	color: #eee;
+	width: 320px;
+	height: 180.172px;
+	background: #fed136;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#fanmade .card .cover>h1{
+	font-size: 90px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -34.258px;
+	margin-top: -69.5px;
+}
+
+#fanmade .card>a{
+	display: block;
+}
+
+#fanmade .card>a:hover>.cover{
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.7s;
+}
+/******************************同人专区--end****************************/
