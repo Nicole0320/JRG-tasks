@@ -33,6 +33,23 @@ ul, li{
 	background-repeat: no-repeat;
 }
 
+@font-face {
+  font-family: 'iconfont';
+  src: url('yys/font/iconfont.eot');
+  src: url('yys/font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('yys/font/iconfont.woff') format('woff'),
+  url('yys/font/iconfont.ttf') format('truetype'),
+  url('yys/font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /**************************导航栏*******************************/
 .navbar{
 	/*display: none;*/
@@ -383,8 +400,181 @@ header>.download>a:last-of-type:hover{
 }
 
 #fanmade .card>a:hover>.cover{
-	opacity: 1;
+	opacity: 0.9;
 	visibility: visible;
 	transition: opacity 0.7s;
 }
 /******************************同人专区--end****************************/
+
+/******************************式神介绍******************************/
+#servant{
+	padding: 120px 0 200px 0;
+}
+
+#servant>h2{
+	margin: 20px 0;
+	text-align: center;
+}
+
+#servant>p{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+#servant>.main{
+	margin-left: -50px
+}
+
+#servant>.main>div{
+	float: left;
+	width: 300px;
+	margin-left: 50px;
+	text-align: center;
+}
+
+#servant>.main>div>h4,
+#servant>.main>div>p{
+	margin: 10px;
+}
+
+#servant>.main>div>a{
+	text-decoration: none;
+	display: inline-block;
+	position: relative;
+	margin: 10px;
+}
+
+#servant>.main>div>a>img{
+	width: 50px;
+}
+
+#servant>.main>div>a>.cover{
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	background-color: #fed136;
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	font-weight: bold;
+	color: #fff;
+	opacity: 0;
+	visibility: hidden;
+}
+#servant>.main>div>a>.cover:before{
+	content: '';
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#servant>.main>div>a>.cover>p{
+	vertical-align: middle;
+	display: inline-block;
+}
+
+#servant>.main>div>a:hover>.cover{
+	opacity: 0.93;
+	visibility: visible;
+	transition: all 0.5s;
+}
+/*******************************式神录*******************************/
+
+/*******************************contact*******************************/
+#contact{
+	padding: 90px 0;
+	background-image: url(yys/moon-bkg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#contact h2, #contact p{
+	text-align: center;
+	margin: 10px 0;
+}
+
+#contact form{
+	margin-top: 50px;
+}
+
+#contact form>.input>div:first-child{
+	float: left;
+	width: 47%;
+	min-width: 200px;
+}
+
+#contact form>.input>div:first-child>input{
+	width: 85%;
+	height: 45px;
+	margin: 10px 0;
+	border-radius: 5px;
+	border: none;
+}
+
+#contact form>.input>div:last-child{
+	padding: 10px;
+	float: left;
+	width: 45%;
+	height: 175px;
+	min-width: 200px;
+	margin: 0 20px 0 30px;
+}
+
+#contact form>.input>div:last-child>textarea{
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	border: none;
+}
+
+#contact form input[type="submit"]{
+	display: block;
+	font-size: 27px;
+	font-weight: 700;
+	color: #eee;
+	letter-spacing: 5px;
+	background-color: #fed136;
+	padding: 22px 58px;
+	margin: 50px auto;
+	border-radius: 5px;
+	border: none;
+}
+/*******************************contact*******************************/
+
+/*******************************footer*******************************/
+#footer{
+	padding: 20px 0;
+}
+
+#footer>p{
+	float: left;
+}
+
+#footer>.me{
+	width: 148px;
+	margin: 0 auto;
+}
+
+#footer>.me>a{
+	display: inline-block;
+	text-decoration: none;
+	font-size: 30px;
+	color: #222;
+	margin: 0 8px;
+}
+
+#footer>.me>a:hover{
+	color: #fed136;
+}
+
+#footer>a{
+	display: block;
+	text-decoration: none;
+	color: #333;
+	float: right;
+}
+
+#footer>a:hover{
+	color: #fed136;
+	text-decoration: underline;
+}
