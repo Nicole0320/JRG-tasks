@@ -1,0 +1,100 @@
+*{margin: 0; padding: 0;}
+ul,li{list-style: none;}
+
+.clear::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+body{
+    color: #333;
+}
+
+.box{
+    width: 585.3px;
+    height: 200px;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+}
+
+.box>.tabs a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px 80px;
+    float: left;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.box>.tabs>li:last-child>a{
+    border-right: none;
+}
+
+.box>.content>li{
+    display: none;
+}
+
+button{
+    padding: 5px 10px;
+    background: none;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    
+}
+
+.click-me{
+    margin-left: 20px;
+}
+
+.alert-model{
+    position: fixed;
+    background: rgba(20,20,20,0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
+.alert-box{
+    width: 500px;
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -250px;
+    box-shadow: 0 0 2px 2px #c0c0c0;
+    background: #fff;
+    /*display: none;*/
+}
+
+.close{
+    float: right;
+    margin-top: 5px;
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+.alert-box>h1{
+    padding: 5px 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.alert-box>h2{
+    padding: 5px 15px;
+}
+
+.cancel{
+    position: absolute;
+    right: 75px;
+    bottom: 15px;
+}
+
+.ok{
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
