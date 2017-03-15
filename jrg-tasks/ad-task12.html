@@ -37,7 +37,7 @@
     var btn = document.querySelector("#load-more");
     var ct = document.querySelector("#container");
     var pageIndex = 0;
-    var isDataArrive = true;
+    var isDataArrive = true; //状态锁
 
     btn.addEventListener("click",function(e){
         e.preventDefault();
@@ -53,7 +53,8 @@
         isDataArrive = false;
     })
 
-    function renderPage(news){
+    //拼装HTML并将拼装完成的元素添加到页面
+    function renderPage(news){ 
         var fragment = document.createDocumentFragment();
         for(var i=0; i<news.length;i++){
             var node = document.createElement("li");
@@ -78,7 +79,8 @@
         });
     }
 
-    function ajax(options){
+    //ajax实现
+    function ajax(options){ 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4){
@@ -99,45 +101,6 @@
         xhr.open(options.type, options.url+args, true);
         xhr.send();
     }
-
-    /*
-    1. 请求类型 get/post
-    2. 接口名称 /loadMore
-    3. 参数列表 
-    {
-        index: 3,
-        length: 5
-    }
-    4. 后台响应类型
-    ["news1", "news2",...,"news5"]
-    */
-
-    
-
-        
-        // var xhr = new XMLHttpRequest();
-        // xhr.onreadystatechange = function(){
-        //     if(xhr.readyState === 4){
-        //         if(xhr.status === 200 || xhr.status === 304){
-        //             var result = JSON.parse(xhr.responseText);
-        //             var fragment = document.createDocumentFragment();
-        //             for(var i=0; i<result.length;i++){
-        //                 var node = document.createElement("li");
-        //                 node.innerText = result[i];
-        //                 fragment.appendChild(node);
-        //             }
-        //             ct.appendChild(fragment);
-        //             pageIndex += 5;
-        //         }
-        //         else{
-        //             console.log("出错了！");
-        //         }
-        //         isDataArrive = true;
-        //     }
-        // };
-        // xhr.open("get", "/loadMore?&index="+pageIndex+"&length=5", true);
-        // xhr.send(null);
-        // isDataArrive = false;
     </script>
 </body>
 
