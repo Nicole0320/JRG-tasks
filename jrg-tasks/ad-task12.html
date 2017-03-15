@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>加载更多</title>
+    <style>
+        ul,li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #container>li{
+            border: 1px solid #333;
+            border-radius: 4px;
+            margin: 10px;
+            padding: 10px;
+        }
+        #load-more{
+            font-size: 18px;
+            padding: 5px 8px;
+            text-decoration: none;
+            color: deeppink;
+            display: block;
+            margin: 0 auto;
+            border: 1px solid deeppink;
+            border-radius: 5px;
+            width: 72px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="container">
+        
+    </ul>
+    <a href="#" id="load-more" class="btn">加载更多</a>
+
+    <script>
+    var btn = document.querySelector("#load-more");
+    var ct = document.querySelector("#container");
+    var pageIndex = 0;
+    var isDataArrive = true;
+
+    btn.addEventListener("click",function(e){
+        e.preventDefault();
+        if(!isDataArrive){
+            return;
+        }
+
+        loadData(function(news){
+            renderPage(news);
+            pageIndex += 5;
+            isDataArrive = true;
+        });
+        isDataArrive = false;
+    })
+
+    function renderPage(news){
+        var fragment = document.createDocumentFragment();
+        for(var i=0; i<news.length;i++){
+            var node = document.createElement("li");
+            node.innerText = news[i];
+            fragment.appendChild(node);
+        }
+        ct.appendChild(fragment);
+    }
+
+    function loadData(callback){
+        ajax({
+            "type": "get",
+            "url": "/loadMore",
+            "arguments":{
+                "index": pageIndex,
+                "length": 5,
+            },
+            "onSuccess": callback,
+            "onError": function(){
+                console.log("error!!!");
+            }
+        });
+    }
+
+    function ajax(options){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if(xhr.status === 200 || xhr.status === 304){
+                    var result = JSON.parse(xhr.responseText);
+                    options.onSuccess(result);
+                }
+                else{
+                    options.onError();
+                }
+            }
+        };
+        var args = "?";
+        for(var key in options.arguments){
+            args += key + "=" + options.arguments[key] + '&';
+        }
+        args = args.substr(0, args.length-1);
+        xhr.open(options.type, options.url+args, true);
+        xhr.send();
+    }
+
+    /*
+    1. 请求类型 get/post
+    2. 接口名称 /loadMore
+    3. 参数列表 
+    {
+        index: 3,
+        length: 5
+    }
+    4. 后台响应类型
+    ["news1", "news2",...,"news5"]
+    */
+
+    
+
+        
+        // var xhr = new XMLHttpRequest();
+        // xhr.onreadystatechange = function(){
+        //     if(xhr.readyState === 4){
+        //         if(xhr.status === 200 || xhr.status === 304){
+        //             var result = JSON.parse(xhr.responseText);
+        //             var fragment = document.createDocumentFragment();
+        //             for(var i=0; i<result.length;i++){
+        //                 var node = document.createElement("li");
+        //                 node.innerText = result[i];
+        //                 fragment.appendChild(node);
+        //             }
+        //             ct.appendChild(fragment);
+        //             pageIndex += 5;
+        //         }
+        //         else{
+        //             console.log("出错了！");
+        //         }
+        //         isDataArrive = true;
+        //     }
+        // };
+        // xhr.open("get", "/loadMore?&index="+pageIndex+"&length=5", true);
+        // xhr.send(null);
+        // isDataArrive = false;
+    </script>
+</body>
+
