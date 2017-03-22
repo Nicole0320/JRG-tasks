@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ad-task14-2:jQuery实现标签切换</title>
+    <link rel="stylesheet" href="ad-task14-2.css">
+</head>
+<body>
+    <div class="box">
+        <ul class="tags clear">
+            <li class="tag1">热门</li>
+            <li class="tag2">珠宝首饰</li>
+            <li class="tag3">奢侈品</li>
+        </ul>
+        <div class="border">
+        <ul class="goods clear">
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <div class="box">
+        <ul class="tags clear">
+            <li class="tag1">热门2</li>
+            <li class="tag2">珠宝首饰2</li>
+            <li class="tag3">奢侈品2</li>
+        </ul>
+        <div class="border">
+        <ul class="goods clear">
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        var products = [
+	{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手 猴哥款',
+		price: '￥405.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg',
+		name: '珂兰 黄金转运珠 猴哥款',
+		price: '￥100.00'
+	},{
+		img: 'http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg',
+		name: '珂兰 黄金手链 3D猴哥款',
+		price: '￥45.00'
+	}
+];
+        $('.tags').on("click",'li',function(){
+            // console.log(this);
+            var jthis = $(this);
+            jthis.siblings().removeClass('focus');
+            jthis.addClass('focus');
+            var i=parseInt(jthis.attr('class').match(/\d/g));
+            var jproduct = jthis.parents('.box').find('.product');
+            jproduct.children('img').attr('src',products[i-1].img)
+            jproduct.children('.intro').text(products[i-1].name);
+            jproduct.children('.price').text(products[i-1].price);
+        });
+
+        $('.tag1').trigger("click");
+
+        $('.goods').on('mouseenter','.product',function(){
+            var jthis = $(this);
+            console.log(this);
+            jthis.append('<div class=cover><p>立即抢购</p></div>');
+        });
+
+        $('.goods').on('mouseleave','.product',function(){
+            var jthis = $(this);
+            console.log(this);
+            jthis.children('.cover').remove();
+        });
+    </script>
+</body>
