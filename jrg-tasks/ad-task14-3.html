@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ad-task14-3: 加载更多商品</title>
+    <link rel="stylesheet" href="ad-task14-2.css">
+</head>
+<body>
+    <div class="box">
+        <h1>珠宝首饰</h1>
+        <ul class="goods clear">
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+            <li class="product">
+                <img src="#" alt="">
+                <p class="intro"></p>
+                <p class="price"></p>
+            </li>
+        </ul>
+        <button id="add">添加</button>
+    </div>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+        var products = [
+	{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手 猴哥款',
+		price: '￥405.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg',
+		name: '珂兰 黄金转运珠 猴哥款',
+		price: '￥100.00'
+	},{
+		img: 'http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg',
+		name: '珂兰 黄金手链 3D猴哥款',
+		price: '￥45.00'
+	}
+];
+
+        //初始加载数据
+        var jproducts = $('.product');
+        for(var i=0; i<jproducts.length; i++){
+            jproducts.eq(i).children('img').attr('src',products[i%3].img);
+            jproducts.eq(i).children('.intro').text(products[i%3].name);
+            jproducts.eq(i).children('.price').text(products[i%3].price);
+        }
+
+        //点击添加按钮后增加数据
+        $('#add').on('click',function(){
+            var newNodes = [];
+            for(var i=0; i<3; i++){
+                newNodes[i] = $('<li class="product">\
+                <img src="#" alt="">\
+                <p class="intro"></p>\
+                <p class="price"></p>\
+            </li>');
+                newNodes[i].children('img').attr('src',products[Math.floor(Math.random()*3)].img);
+                newNodes[i].children('.intro').text(products[Math.floor(Math.random()*3)].name);
+                newNodes[i].children('.price').text(products[Math.floor(Math.random()*3)].price);
+            }
+            $('.goods').append(newNodes);
+        });
+
+        //鼠标指到商品时的遮盖效果
+        $('.goods').on('mouseenter','.product',function(){
+            var jthis = $(this);
+            jthis.append('<div class=cover><p>立即抢购</p></div>');
+        });
+        $('.goods').on('mouseleave','.product',function(){
+            var jthis = $(this);
+            jthis.children('.cover').remove();
+        });  
+    </script>
+</body>
