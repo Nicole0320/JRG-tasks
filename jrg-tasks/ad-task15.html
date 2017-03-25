@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>加载更多</title>
+    <style>
+        ul,li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #container>li{
+            border: 1px solid #333;
+            border-radius: 4px;
+            margin: 10px;
+            padding: 10px;
+        }
+        #load-more{
+            font-size: 18px;
+            padding: 5px 8px;
+            text-decoration: none;
+            color: deeppink;
+            display: block;
+            margin: 0 auto;
+            border: 1px solid deeppink;
+            border-radius: 5px;
+            width: 72px;
+        }
+        .hover{
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <ul id="container">
+    </ul>
+    <a href="#" id="load-more" class="btn">加载更多</a>
+
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+    /*
+    1. 请求类型 get/post
+    2. 接口名称 /loadMore
+    3. 参数列表 
+    {
+        index: 3,
+        length: 5
+    }
+    4. 后台响应类型
+    ["news1", "news2",...,"news5"]
+    */
+    $('#container').on('mouseenter','li',function(){
+        $(this).addClass('hover');
+    });
+    $('#container').on('mouseleave','li',function(){
+        $(this).removeClass('hover');
+    });
+    var curIndex = 0;
+    $('#load-more').on('click',function(e){
+        e.preventDefault();
+        $.ajax({
+            url: 'loadMore',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                index: curIndex,
+                length: 5
+            },
+            success: onSuccess,
+            error: onError
+        });
+    });
+    function onSuccess(data){
+        curIndex += 5;
+        var html = '<li>'+data.join('</li><li>')+'</li>';
+        $('#container').append(html);
+    }
+    function onError(){
+        console.log('error...');
+    }
+
+
+    </script>
+</body>
+
