@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ad-task16-1：图片懒加载</title>
+    <style>
+        img{
+            display: block;
+            max-width: 700px;
+        }
+    </style>
+</head>
+<body>
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121226_RnGQd.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121221_Prfvw.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121215_SwNch.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121206_jUevF.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121201_Gs2Sn.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121155_SXfVJ.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121150_uSKG4.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121143_VFksA.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121138_K8jCa.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121133_zVAEu.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121127_sPWG3.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325121120_whS2a.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325114908_8vtSm.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325114903_fAwtr.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325114859_EcLPZ.thumb.700_0.jpeg" alt="">
+    <img src="http://img.zcool.cn/community/02dd4155c1c09a000001a5f0498dd6.gif" data-src="https://a-ssl.duitang.com/uploads/item/201703/25/20170325114835_sMtQf.thumb.700_0.jpeg" alt="">
+    
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+    function isVisible($node){
+        var windowHeight = $(window).height();
+        var scrollTop = $(window).scrollTop();
+        var offsetTop = $node.offset().top;
+        var nodeHeight = $node.outerHeight(true);
+        if(scrollTop > offsetTop-windowHeight && scrollTop < offsetTop+nodeHeight){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    $(window).on('load',check);    
+    $(window).on('scroll',check);
+
+    function check(){
+        $('img').not('.loaded').each(function(){
+            if(isVisible($(this))){
+                show($(this));
+            }
+        });
+    }
+
+    function show($img){
+        //使用延时函数模拟慢网速测试用，正式代码应将里面的代码从setTimeout放出来
+        setTimeout(function() 
+        {$img.addClass('loaded');
+        var imgSrc = $img.attr('data-src');
+        $img.attr('src',imgSrc);},1000);
+    } 
+    </script>
+</body>
