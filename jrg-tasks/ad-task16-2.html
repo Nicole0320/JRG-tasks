@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <style>
+        ul,li{
+            list-style: none;
+            padding: 0;
+        }
+        #news{
+            width: 600px;
+            margin: 10px auto;
+        }
+        #news a::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #news a{
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        #news img{
+            width: 150px;
+            height: 110px;
+            display: block;
+            float: left;
+        }
+        #news h2, #news p{
+            color: #333;
+            width: 430px;
+            margin: 14px 0 15px 20px;
+            float: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        #news p{
+            color: #ccc;
+        }
+        #end{
+            width: 600px;
+            margin: 10px auto;
+            display: block;
+            margin: 1px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="news">
+        <li><a href="">
+                <img src="images/1.jpg" alt="">
+                <h2>一名中国公民被法国警察枪杀 家属：未警告就开枪</h2>
+                <p>据中国驻法国大使馆的通报称，3月26日20时左右，在巴黎19区发生一起不幸事件，一名中国人因与法国警察发生冲突被打死。</p>
+            </a></li>
+        <li><a href="">
+                <img src="images/0.jpg" alt="">
+                <h2>特朗普拟建美版“马上办” 解决办事效率低和官僚现象</h2>
+                <p>特朗普将任命女婿库什纳为白宫创新办公室负责人，其任务是解决政府过低的办事效率和官僚现象</p>
+            </a></li>
+    </ul>
+    <p id="end"></p>
+    <!--<button id="more">load more</button>-->
+    
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+    var currentIndex = 0;   //当前请求的新闻是第几条
+    var length = 3;     //请求新闻的数量
+    var isDataArrive = true;    //请求状态锁
+
+    //加载新闻操作
+    function loadNews(){
+        isDataArrive = false;
+        $.ajax({
+            url: 'getNews',
+            type: 'get',
+            data: {
+                index: currentIndex,
+                length: length
+            },
+            success: onSuccess,
+            error: onError
+        })
+    }
+    function onSuccess(res){
+        console.log(res);
+        if(res.status === 0){
+            var nodes = [];
+            for(var i=0; i<res.news.length; i++){
+                var html = '<li><a href=""><img src="'
+                html += res.news[i].imgSrc + '" alt=""><h2>';
+                html += res.news[i].head + '</h2><p>';
+                html += res.news[i].content + '</p></a></li>';
+                nodes.push(html);
+            }            
+            $('#news').append(nodes);
+            currentIndex += res.news.length;
+            isDataArrive = true;
+            if(isVisible($('#end'))){
+                check();
+            }
+        }
+        else if(res.status === 1){
+            $('#end').text('没有更多了~');
+            $(window).off('scroll');
+        }
+    }
+    function onError(){
+        console.log('新闻加载失败');
+    }
+
+    //判断元素是否是出现在窗口可视范围
+    function isVisible($node){
+        var windowHeight = $(window).height();
+        var scrollTop = $(window).scrollTop();
+        var offsetTop = $node.offset().top;
+        var nodeHeight = $node.outerHeight(true);
+        if(scrollTop >= offsetTop-windowHeight && scrollTop <= offsetTop+nodeHeight){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    $(window).on('load',check);
+       
+    $(window).on('scroll',check);
+
+    function check(){
+        if(isVisible($('#end'))){
+            if(isDataArrive){
+                loadNews();
+            }
+        }
+    }
+
+     
+    </script>
+</body>
