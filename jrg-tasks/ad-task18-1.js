@@ -72,7 +72,7 @@ function columnAdd(){
     if(!isLoading){
         $('#more').remove();
         addImg(shortestColumn());
-        $('.column').eq(shortestColumn()).append('<div id="more">看不见我看不见我</div>');
+        $('.column').eq(shortestColumn()).append('<div id="more"></div>');
     }
 }
 
