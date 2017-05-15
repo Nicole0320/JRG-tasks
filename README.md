@@ -4,4 +4,4 @@
 
 ---
 
-[点击这里预览](https://nicole0320.github.io/blog/index.html)
+[点击这里预览](https://nicole0320.github.io/JRG-tasks/index.html)
